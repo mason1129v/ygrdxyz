@@ -1,0 +1,127 @@
+.h_streams{
+    width: 80%;
+    height: 700px;
+    float: left;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    overflow-y:auto;
+}
+.h_video{
+    flex: 1 0 40%;
+    max-width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin:15px;
+    padding: 10px;
+}
+.each_v{
+    margin: 20px auto;
+    max-width: 90%;
+    max-height: 90%;
+}
+.v_ctrl{
+    width: 90%;
+    height:60px;
+    display: flex;
+    justify-content: center;
+}
+.v_btn{
+    min-width: 50px;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 10px;
+    margin: 10px;
+}
+.add_new_stream{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.add_btn{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: blue;
+    font-size: 50px;
+    color:white;
+    line-height: 70px;
+}
+.h_comment{
+    width: 20%;
+    min-height: 700px;
+    float: left;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-y: hidden;
+}
+.h_messages{
+    width: 90%;
+    height: 530px;
+    border: solid black 1px;
+    border-radius: 10px;
+    margin-top: 15px;
+    padding: 10px;
+    overflow-y: auto;
+}
+.mes.tit{
+    font-size: 20px;
+}
+.mes_name{
+    font-size: 14px;
+    margin:3px auto;
+}
+.mes_con{
+    font-size: 12px;
+}
+.h_typing{
+    width: 90%;
+    height: 120px;
+    border: solid black 1px;
+    border-radius: 10px;
+}
+.type_area{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    flex-wrap: wrap;
+}
+.txtarea{
+    width: 90%;
+    resize: none;
+    border: none;
+    padding: 5px;
+}
+.txtarea:focus{
+    outline: none;
+}
+.type_hr{
+    width: 90%;
+    margin: 7px auto;
+    height: 1px;
+}
+.txt_btn{
+    width: 40%;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+.modal_txt{
+    width: 100%;  
+    resize: none;
+    margin: 0 auto;
+    padding: 5px;
+}
+.modal_p{
+    font-size: 16px;
+}
+.modal_btn{
+    float: right;
+}
