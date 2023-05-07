@@ -41,6 +41,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    padding-bottom: 20px;
 }
 .add_btn{
     width: 60px;
@@ -49,6 +50,7 @@
     font-size: 50px;
     line-height: 60px;
     border:none;
+    transition: 1s;
 }
 .h_comment{
     width: 20%;
@@ -61,7 +63,7 @@
 }
 .h_messages{
     width: 90%;
-    height: 530px;
+    height: 520px;
     border: solid black 1px;
     border-radius: 10px;
     margin-top: 15px;
@@ -97,6 +99,7 @@
     resize: none;
     border: none;
     padding: 5px;
+    caret-color: #be3dff;
 }
 .txtarea:focus{
     outline: none;
@@ -111,6 +114,8 @@
     height: 30px;
     font-size: 16px;
     border-radius: 10px;
+    border: none;
+    transition: 1s;
 }
 .modal_txt{
     width: 100%;  
@@ -123,4 +128,8 @@
 }
 .modal_btn{
     float: right;
+}
+.v_btn:hover,.add_btn:hover,.txt_btn:hover{
+    background-color: #be3dff;
+    box-shadow: 0 0 10px #be3dff;
 }
