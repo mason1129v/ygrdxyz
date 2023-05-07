@@ -112,6 +112,7 @@
 .txt_btn{
     width: 40%;
     height: 30px;
+    padding: 8px;
     font-size: 16px;
     border-radius: 10px;
     border: none;
@@ -122,14 +123,20 @@
     resize: none;
     margin: 0 auto;
     padding: 5px;
+    border-radius: 10px;
 }
 .modal_p{
     font-size: 16px;
+    margin-top: 10px;
 }
 .modal_btn{
     float: right;
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+    transition: 1s;
 }
-.v_btn:hover,.add_btn:hover,.txt_btn:hover{
+.v_btn:hover,.add_btn:hover,.txt_btn:hover,.modal_btn:hover{
     background-color: #be3dff;
     box-shadow: 0 0 10px #be3dff;
 }
