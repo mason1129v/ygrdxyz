@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>client</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="../../static/css/basic.css">
+    <link rel="stylesheet" href="../../static/css/client.css">
+    <link rel="stylesheet" href="../../static/css/color.css">
+</head>
+<body class="kuro_bc">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ki_bs" aria-label="Fifth navbar example">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">億個人的小宇宙</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05"
+                aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample05">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/index/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/host/">Host</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  active" href="/client/">Client</a>
+                    </li>
+                </ul>
+                <form role="search">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                </form>
+            </div>
+        </div>
+    </nav>
+    <main class="kuro_bc">
+        <!--資訊區-->
+        <div class="c_intro kuro_bc">
+            <div class="c_wrap_img ki_bd ki_bs">
+                <img src="../../static/img/images (2).jpg" class="c_intro_img">
+            </div>
+            <div class="c_intro_ctn shiro_f ki_bd ki_bs">
+                這裡是介紹的內容<br>
+                可以介紹商品<br>
+                或是要寫些什麼備註內容<br>
+                總之就是這麼回事...
+            </div>
+            <a href="https://www.cyclegear.com/gear/street-steel-oakland-boots" target="_blank">
+                <button class="c_link_btn shiro_bs">瀏覽連結</button>
+            </a>
+        </div>
+        <!--主要影片區-->
+        <div class="c_streams kuro_bc">
+            <div class="c_video">
+                <video class="each_v ki_bs" id="user" controls playsinline>
+                </video>
+                <hr class="v_hr ki_bc ki_bd ki_bs">
+                <div class="c_ctrl">
+                    <form>
+                        <input type="submit" value="關閉" class="c_btn shiro_bs">
+                        <input type="submit" value="回到主線" class="c_btn shiro_bs">
+                        <input type="submit" value="分享" class="c_btn shiro_bs">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="h_comment kuro_bc">
+            <div class="h_messages ki_bd shiro_f ki_bs">
+                <p class="mes_tit">即時聊天室 - {{ room_name }}</p>
+                <ul id="messages"></ul>
+            </div>
+            <div class="h_typing ki_bd ki_bs">
+                <form class="type_area" id="form">
+                    <textarea rows="2" class="txtarea kuro_bc shiro_f" placeholder="輸入留言..." name="message"></textarea>
+                    <hr class="type_hr ki_bc ki_bd ki_bs">
+                    <input type="submit" value="傳送" class="txt_btn shiro_bs">
+                </form>
+            </div>
+        </div>
+        <script type = "text/javascript">
+        let url = `ws://${window.location.host}/ws/socket-server/`
+    
+        const chatSocket = new WebSocket(url)
+    
+        chatSocket.onmessage = function(e){
+            let data = JSON.parse(e.data)
+            console.log('Data:', data)
+    
+            if(data.type === 'chat'){
+                let messages = document.getElementById('messages')
+    
+                messages.insertAdjacentHTML('beforeend',`<div>
+                                        <p>${data.message}</p>
+                                        </div>`)
+            }
+        }
+    
+        let form = document.getElementById('form')
+        form.addEventListener('submit', (e)=> {
+            e.preventDefault()
+            let message = e.target.message.value
+            chatSocket.send(JSON.stringify({
+                'message':message
+            }))
+            form.reset()
+        })
+    
+    </script>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+<script src="../../static/js/client.js"></script>
+
+</html>
