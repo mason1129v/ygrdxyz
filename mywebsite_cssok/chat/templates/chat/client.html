@@ -74,7 +74,7 @@
         </div>
         <div class="h_comment kuro_bc">
             <div class="h_messages ki_bd shiro_f ki_bs">
-                <p class="mes_tit">即時聊天室 - {{ room_name }}</p>
+                <p class="mes_tit">即時聊天室 </p>
                 <ul id="messages"></ul>
             </div>
             <div class="h_typing ki_bd ki_bs">
@@ -89,17 +89,18 @@
         let url = `ws://${window.location.host}/ws/socket-server/`
     
         const chatSocket = new WebSocket(url)
-    
+        
+
         chatSocket.onmessage = function(e){
             let data = JSON.parse(e.data)
             console.log('Data:', data)
     
             if(data.type === 'chat'){
                 let messages = document.getElementById('messages')
-    
-                messages.insertAdjacentHTML('beforeend',`<div>
-                                        <p>${data.message}</p>
-                                        </div>`)
+
+                //let messageWithRandomName = data.randomName + ": " + data.message
+                let messageWithRandomName = '{{Member_id}}' + ": " + data.message
+                messages.insertAdjacentHTML('beforeend', `<li>${messageWithRandomName}</li>`)
             }
         }
     
@@ -108,11 +109,10 @@
             e.preventDefault()
             let message = e.target.message.value
             chatSocket.send(JSON.stringify({
-                'message':message
+                'message': message
             }))
             form.reset()
         })
-    
     </script>
     </main>
     <footer>
