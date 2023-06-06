@@ -15,7 +15,7 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../static/css/basic.css">
-    <link rel="stylesheet" href="../../static/css/host.css">
+    <link rel="stylesheet" href="../../static/css/stream.css">
     <link rel="stylesheet" href="../../static/css/color.css">
     <link rel="stylesheet" href="../../static/css/star.css">
 </head>
@@ -40,9 +40,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/client/">觀看者</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/videos/">影片</a>
-                    </li>
+                    
                 </ul>
                 <form role="search">
                     <input class="form-control" type="search" placeholder="Search" aria-label="Search">
@@ -52,69 +50,31 @@
     </nav>
     <div class="star"></div>
     <main>
+        <div class="back">
+            <a href="/host/"><button type="button" class="back_btn shiro_bs"><i class="fa-solid fa-caret-left fa-2xl"></i></button></a>
+        </div>
         <!--主要影片區-->
         <div class="h_streams">
-
-            <div class="h_video midori_bd midori_bs">
-                <video class="each_v"id="user" autoplay playsinline style="object-position:center;">
+            
+            <div class="h_video l_ao_bd">
+                <video class="each_v"id="user" autoplay playsinline>
                 </video>
                 <div class="v_ctrl">
-                    <form action="/delete/" method = "POST">{% csrf_token %}
-                        <input type="submit" value="&#xf2d4;" class="v_btn shiro_bs" id="l_c_btn">
-                    </form>
-                    <button type="button" class="v_btn shiro_bs" id="l_s_btn">
+                    <button type="button" class="v_btn shiro_bs">
                         <i class="fa-solid fa-gear fa-lg"></i>
                     </button>
                     <button class="shiro_bs" id="mic_btn"><i class="fa-solid fa-microphone fa-lg"></i></button>
                     <button class="shiro_bs" id="camera_btn"><i class="fa-solid fa-video fa-lg"></i></button>
-                    <button type="button" class="v_btn shiro_bs" id="l_l_btn" data-bs-toggle="modal" data-bs-target="#LinkModal">
+                    <button type="button" class="v_btn shiro_bs"data-bs-toggle="modal" data-bs-target="#LinkModal">
                         <i class="fa-solid fa-link fa-lg"></i>
                     </button>
-                    <form action="/stream/" method = "">
-                        <input type="submit" value="&#xf06e;" class="v_btn shiro_bs" id="l_v_btn">
-                    </form>
                 </div>
-            </div>
-
-            <!--若同時有兩個影片:-->
-            {% if checknum != 0 %}
-            {% if checknum %}
-            {% for i in checknum|my_range %}
-            <div class="h_video midori_bd midori_bs">
-                <video class="each_v" autoplay>
-                    <source src="../../static/video/001v.mp4" type="video/mp4">
-                </video>
-                <div class="v_ctrl">
-                    <form action="/delete/" method = "POST">{% csrf_token %}
-                        <input type="submit" value="&#xf2d4;" class="v_btn shiro_bs fa-input" id="s_c_btn">
-                    </form>
-                    <button type="button" class="v_btn shiro_bs" id="s_s_btn"><i class="fa-solid fa-gear fa-lg"></i></button>
-                    <button type="button" class="v_btn shiro_bs" id="s_l_btn" data-bs-toggle="modal" data-bs-target="#LinkModal">
-                        <i class="fa-solid fa-link fa-lg"></i>
-                    </button>
-                    <form action="/stream/" method = "">
-                        <input type="submit" value="&#xf06e;" class="v_btn shiro_bs" id="s_v_btn">
-                    </form>
-                </div>
-            </div>
-            {% endfor %}
-            {% else %}
-
-            <div></div>
-
-            {% endif %}
-            {% endif %}
-            <!--新增直播分支-->
-            <div class="add_new_stream">
-                <form action="/seperate/" method = "POST">{% csrf_token %}
-                    <input type="submit" class="add_btn shiro_bc kuro_f shiro_bs" value="+">
-                </form>
             </div>
         </div>
-        <!--留言區
-        <div class="h_comment kuro_bc">
-            <div class="h_messages murasaki_bd murasaki_bs shiro_f">
-                <p class="mes_tit"> 留言區</p>
+        <!--留言區-->
+        <div class="h_comment">
+            <div class="h_messages d_ao_bd shiro_f">
+                <p class="mes_tit">即時留言</p>
                 {% for mes in mess %}
                 <div>
                     <p class="mes_name">名稱</p>
@@ -122,15 +82,15 @@
                 </div>
                 {% endfor %}
             </div>
-            <div class="h_typing murasaki_bd murasaki_bs">
+            <div class="h_typing d_ao_bd">
                 <form class="type_area">
                     <textarea rows="2" class="txtarea kuro_bc shiro_f" placeholder="輸入留言..."></textarea>
                     <hr class="type_hr">
-                    <input type="submit" value="傳送" class="txt_btn shiro_bs">
+                    <input type="submit" value="傳送" class="txt_btn shiro_bs d_ao_f">
                 </form>
             </div>
         </div>
-        -->
+        
     </main>
     <!-- 新增連結 -->
     <div class="modal fade" id="LinkModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -154,8 +114,23 @@
             </div>
         </div>
     </div>
-    <footer>
-
+    <footer class="shiro_bc shiro_bs">
+        <div class="ft_container">
+            <div class="ft_logo">
+                <div class="ft_img_c">
+                    <img class="ft_img" src="../../static/img/logo.ico">  
+                </div>
+                <p class="h6 ft_word">億個人的小宇宙</p>
+            </div>
+            <div>
+                <p style="font-size:16px;margin:0;">©億個人的小宇宙 2023</p>
+            </div>
+            <div class="ft_ic_c">
+                <i class="fa-brands fa-facebook fa-xl"></i>
+                <i class="fa-brands fa-instagram fa-xl"></i>
+                <i class="fa-solid fa-envelope fa-xl"></i>
+            </div>
+        </div>
     </footer>
 </body>
 <script src='../../static/js/host.js'></script>
