@@ -6,16 +6,19 @@
     background-color: #232323;
 }
 .d_ao_bc{
-    background-color: #29335D;
+    background-color: #0008FF;
 }
 .l_ao_bc{
-    background-color: #8FBCEB;
+    background-color: #15B0FE;
 }
 .murasaki_bc{
     background-color: #be3dff;
 }
 .ki_bc{
     background-color: #ECCF68;
+}
+.midori_bc{
+    background-color: #25FFEA;
 }
 /*font*/
 .shiro_f{
@@ -24,24 +27,39 @@
 .kuro_f{
     color: black;
 }
-.d_ao_bc{
-    color: #29335D;
+.d_ao_f{
+    color: #0008FF;
 }
-.l_ao_bc{
-    color: #8FBCEB;
+.l_ao_f{
+    color: #15B0FE;
 }
-.murasaki_bc{
+.murasaki_f{
     color: #be3dff;
 }
-.ki_bc{
-    border-color: #ECCF68;
+.ki_f{
+    color: #ECCF68;
+}
+.midori_f{
+    color:#25FFEA
 }
 /*border*/
+.shiro_bd{
+    border-color: white;
+}
+.d_ao_bd{
+    border-color: #0008FF;
+}
+.l_ao_bd{
+    border-color: #15B0FE;
+}
 .ki_bd{
     border-color: #ECCF68;
 }
 .murasaki_bd{
     border-color: #be3dff;
+}
+.midori_bd{
+    border-color: #25FFEA;
 }
 /*text-shadow*/
 
@@ -53,8 +71,14 @@
     box-shadow: 0 0 5px white;
 }
 .d_ao_bs{
-    box-shadow:0 0 5px #29335D;
+    box-shadow:0 0 5px #0008FF;
+}
+.l_ao_bs{
+    box-shadow: 0 0 5px #15B0FE;
 }
 .murasaki_bs{
     box-shadow:0 0 5px #be3dff;
+}
+.midori_bs{
+    box-shadow: 0 0 5px #25FFEA;
 }

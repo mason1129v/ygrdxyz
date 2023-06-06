@@ -29,11 +29,17 @@ main{
 }
 .c_intro_ctn{
     width: 100%;
+    min-height: 200px;
     font-size: 14px;
     margin-top: 10px;
     border: solid 1px;
     border-radius: 10px;
-    padding: 5px;
+    padding: 10px;
+    transition: 1s;
+}
+.c_intro_ctn:hover{
+    background-color: #ECCF68;
+    color: black;
 }
 .c_link_btn{
     margin: 20px auto;
@@ -63,10 +69,9 @@ main{
     height:60px;
 }
 .c_btn{
-    min-width: 50px;
-    height: 40px;
-    font-size: 16px;
-    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     margin: 10px;
     float: right;
     padding: 8px;
@@ -129,9 +134,11 @@ main{
     padding: 5px;
     border-radius: 10px;
     caret-color: #ECCF68;
+    transition: 1s;
 }
 .txtarea:focus{
     outline: none;
+    box-shadow: 0 0 10px #ECCF68;
 }
 .type_hr{
     width: 90%;
@@ -141,6 +148,7 @@ main{
 .txt_btn{
     width: 40%;
     height: 30px;
+    margin-top:15px;
     font-size: 16px;
     border-radius: 10px;
     border: none;

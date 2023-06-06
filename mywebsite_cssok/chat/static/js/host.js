@@ -12,12 +12,14 @@ let toggleCamera = async () => {
         videoTrack.enabled = false
         document.getElementById('camera_btn').style.backgroundColor = 'rgb(255, 80, 80)'
         document.getElementById('camera_btn').style.boxShadow = '0 0 10px rgb(255, 80, 80)'
-        document.querySelector('#camera_btn').innerText = '開啟鏡頭'
+        document.getElementById('camera_btn').style.color = 'white'
+        document.querySelector('#camera_btn').innerHTML = '<i class="fa-solid fa-video-slash fa-lg"></i>'
     }else{
         videoTrack.enabled = true
         document.getElementById('camera_btn').style.backgroundColor = 'white'
         document.getElementById('camera_btn').style.boxShadow = '0 0 10px white'
-        document.querySelector('#camera_btn').innerText = '闗閉鏡頭'
+        document.getElementById('camera_btn').style.color = 'black'
+        document.querySelector('#camera_btn').innerHTML = '<i class="fa-solid fa-video fa-lg"></i>'
     }
 }
 
@@ -28,12 +30,15 @@ let toggleMic = async () => {
         audioTrack.enabled = false
         document.getElementById('mic_btn').style.backgroundColor = 'rgb(255, 80, 80)'
         document.getElementById('mic_btn').style.boxShadow = '0 0 10px rgb(255, 80, 80)'
-        document.querySelector('#mic_btn').innerText = '開啟麥克風'
+        document.getElementById('mic_btn').style.color = 'white'
+        document.querySelector('#mic_btn').innerHTML = '<i class="fa-solid fa-microphone-slash fa-lg"></i>'
+        
     }else{
         audioTrack.enabled = true
         document.getElementById('mic_btn').style.backgroundColor = 'white'
         document.getElementById('mic_btn').style.boxShadow = '0 0 10px white'
-        document.querySelector('#mic_btn').innerText = '闗閉麥克風'
+        document.getElementById('mic_btn').style.color = 'black'
+        document.querySelector('#mic_btn').innerHTML = '<i class="fa-solid fa-microphone fa-lg"></i>'
     }
 }
 
