@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from datetime import datetime, timezone, timedelta
 from chat.models import *
-import random
+
+# import random
 
 
 # Create your views here.
@@ -19,11 +20,22 @@ def index_view(request):
     return render(request, 'chat/index.html', locals())
 
 def host_view(request):
+    return render(request, 'chat/host.html', locals())
+
+def sp_view(request):
+    m = member.objects.get( MID = 3 )
+    Member_id = m.MAC
     mess = messbrd.objects.all()
-    return render(request, 'chat/host.html' )
+    keyword = request.GET.get('keyword') 
+    h = keyword  
+    productname = product.objects.get( PID = h )  
+    print(h)
+    print(productname)
+    return render(request, 'chat/client_sp.html', locals())
 
 def client_view(request):
-    Member_id = 'PIN'
+    m = member.objects.get( MID = 3 )
+    Member_id = m.MAC
     mess = messbrd.objects.all()
     return render(request, 'chat/client.html', locals())
 

@@ -8,7 +8,8 @@ urlpatterns = [
     path('index/', views.index_view),
     path('host/', views.host_view),
     path('client/', views.client_view),
+    path('client_sp/', views.sp_view),
     path('seperate/', views.seperate),
     path('delete/', views.delete),
-    path('sendmess/', views.sendmess),
+    # path('sendmess/', views.sendmess),
 ]

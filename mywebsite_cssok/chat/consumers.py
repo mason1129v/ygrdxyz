@@ -1,7 +1,7 @@
 import json
 from channels.generic.websocket import WebsocketConsumer
 from asgiref.sync import async_to_sync
-import random
+
 
 
 class ChatConsumer(WebsocketConsumer):
@@ -23,15 +23,33 @@ class ChatConsumer(WebsocketConsumer):
         
         print(message)
         print("=========")
+        if message == '想看鞋子':
+            print('cope')
+            data = {
+                'type': 'redirect',
+                'url': '/client_sp/?keyword=' + 'shoe',  # Replace '/some-url/' with the desired URL to redirect to
+                'value': 'shoe'  # Replace 'example' with the value you want to pass
+            }
+            self.send(text_data=json.dumps(data))
+            print(data)
+        elif message == '想看衣服':
+            print('cope')
+            data = {
+                'type': 'redirect',
+                'url': '/client_sp/?keyword=' + 'cloth',  # Replace '/some-url/' with the desired URL to redirect to
+                'value': 'cloth'  # Replace 'example' with the value you want to pass
+            }
+            self.send(text_data=json.dumps(data))
+            print(data)
+        
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
             {
-                'type':'chat_message',
+                'type': 'chat_message',
                 # 'randomName': self.random_name,
-                'message':message
+                'message': message
             }
         )
-
 
     def chat_message(self, event):
         message = event['message']
@@ -42,6 +60,3 @@ class ChatConsumer(WebsocketConsumer):
             'message': message
         }))
 
-    def get_random_name(self):
-        names = ["PIN", "DORRIS", "HUSI", "MASON"]
-        return random.choice(names)
