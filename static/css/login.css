@@ -1,0 +1,117 @@
+.login_wrap{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top:53px;
+}
+.login_panel{
+    width: 570px;
+    height: 570px;
+    border-radius: 50%;
+    margin-top:30px;
+    box-shadow: 0 0 20px white,inset 0 0 20px white;
+}
+.login_tt{
+    width: 570px;
+    height: 50px;
+    margin-top: 50px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.login_txt{
+    width: 100%;
+    margin-top:15px;
+}
+.l_wrap_i{
+    margin:auto;
+    width: 200px;
+    margin-top:50px;
+}
+.l_wrap_i>input{
+    width: 100%;
+    padding:5px;
+    background-color: inherit;
+    border-radius: 10px;
+    transition: 1s;
+}
+
+.l_wrap_i>input:focus{
+    outline: none;
+    box-shadow: 0 0 10px #25FFEA;
+    border:1px solid #25FFEA;
+}
+
+.login_btn{
+    margin-top: 50px;
+    border-radius: 10px;
+    padding: 8px;
+    background-color: inherit;
+    transition: 1s;
+}
+.login_btn:hover{
+    background-color: #25FFEA;
+    box-shadow: 0 0 20px #25FFEA;
+    border: 1px solid #25FFEA;
+}
+.login_lk{
+    width: 570px;
+    height: 50px;
+    margin-top: 30px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+}
+.login_lk:hover{
+    color: #25FFEA;
+}
+
+
+.sign_txt{
+    width: 100%;
+    margin-top:15px;
+}
+.s_wrap_i{
+    margin:auto;
+    width: 200px;
+
+}
+.s_wrap_i>input{
+    width: 100%;
+    padding:5px;
+    background-color: inherit;
+    border-radius: 10px;
+    transition: 1s;
+}
+
+.s_wrap_i>input:focus{
+    outline: none;
+    box-shadow: 0 0 10px #15B0FE;
+    border:1px solid #15B0FE;
+}
+
+.sign_btn{
+    margin-top:20px;
+    border-radius: 10px;
+    padding: 8px;
+    background-color: inherit;
+    transition: 1s;
+}
+.sign_btn:hover{
+    background-color: #15B0FE;
+    box-shadow: 0 0 20px #15B0FE;
+    border: 1px solid #15B0FE;
+}
+.sign_lk{
+    width: 570px;
+    height: 50px;
+    margin-top: 10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+}
+.sign_lk:hover{
+    color: #15B0FE;
+}

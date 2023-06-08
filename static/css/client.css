@@ -1,3 +1,11 @@
+body{
+    min-height: 100vh;
+    overflow-y: hidden;
+}
+main{
+    min-height: 100vh;
+    overflow-y: hidden;
+}
 .c_intro{
     width: 20%;
     float: left;
@@ -13,19 +21,27 @@
     border-radius: 10px;
     border: solid 1px;
     margin-top: 5px;
+    transition: 1s;
 }
 .c_intro_img{
     width: 100%;
     overflow: hidden;
     border-radius: 10px;
+    transition: 1s;
 }
 .c_intro_ctn{
     width: 100%;
+    min-height: 200px;
     font-size: 14px;
     margin-top: 10px;
     border: solid 1px;
     border-radius: 10px;
-    padding: 5px;
+    padding: 10px;
+    transition: 1s;
+}
+.c_intro_ctn:hover,.c_wrap_img:hover,.c_intro_img:hover{
+    background-color: #ECCF68;
+    color: black;
 }
 .c_link_btn{
     margin: 20px auto;
@@ -55,10 +71,9 @@
     height:60px;
 }
 .c_btn{
-    min-width: 50px;
-    height: 40px;
-    font-size: 16px;
-    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     margin: 10px;
     float: right;
     padding: 8px;
@@ -72,7 +87,7 @@
 }
 .h_comment{
     width: 20%;
-    min-height: 700px;
+    height: 100vh;
     float: left;
     display: flex;
     justify-content: center;
@@ -81,7 +96,7 @@
 }
 .h_messages{
     width: 90%;
-    height: 520px;
+    height: 65%;
     border: solid 1px;
     border-radius: 10px;
     margin-top: 30px;
@@ -100,9 +115,10 @@
 }
 .h_typing{
     width: 90%;
-    height: 120px;
+    height: 18%;
     border: solid black 1px;
     border-radius: 10px;
+    margin-bottom: 15px;
 }
 .type_area{
     width: 100%;
@@ -120,19 +136,21 @@
     padding: 5px;
     border-radius: 10px;
     caret-color: #ECCF68;
+    transition: 1s;
 }
 .txtarea:focus{
     outline: none;
+    box-shadow: 0 0 10px #ECCF68;
 }
 .type_hr{
     width: 90%;
-    margin: 7px auto;
+    margin: 7px auto 15px;
     height: 1px;
-    border: solid 1px;
 }
 .txt_btn{
     width: 40%;
     height: 30px;
+    margin-top:15px;
     font-size: 16px;
     border-radius: 10px;
     border: none;
