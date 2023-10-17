@@ -73,30 +73,121 @@
                 </div>
             </div>
         </div>
-        <!--留言區-->
-        <div class="h_comment kuro_bc">
-            <div class="h_messages ki_bd shiro_f ki_bs">
-                <p class="mes_tit">留言區</p>
-                {% for mes in mess %}
-                <div>
-                    <p class="mes_name">名稱</p>
-                    <p class="mes_con">{{ mes.MCont }}</p>
-                </div>
-                {% endfor %}
-            <!--<div>
-                    <p class="mes_name">名稱</p>
-                    <p class="mes_con">內容在這裡就是這裡</p>
-                </div>
-            ---->
+     
+        
+        <style>
+            /* 聊天視窗樣式 */
+            #chat-container {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 340px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                display: none; /* 預設隱藏 */
+                background-color: #fff;
+            }
+      
+            #chat-header {
+                background-color: #f0f0f0;
+                padding: 10px;
+                border-bottom: 1px solid #ccc;
+            }
+      
+            #chat-body {
+                padding: 10px;
+                height: 200px;
+                overflow-y: scroll;
+            }
+      
+            #chat-input {
+                padding: 10px;
+                border-top: 1px solid #ccc;
+            }
+      
+            #chat-toggle {
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: #007bff;
+                color: #fff;
+                text-align: center;
+                line-height: 50px;
+                cursor: pointer; /* 加入 cursor: pointer 讓它支援點擊事件 */
+            }
+        </style>
+        <div id="chat-toggle" onclick="toggleChat()">客服</div>
+        <div id="chat-container">
+            <div id="chat-header">AI客服聊天室</div>
+            <div id="chat-body">
+                <div id="chat-display"></div>
             </div>
-            <div class="h_typing ki_bd ki_bs">
-                <form class="type_area" action="/sendmess/" method = "POST">{% csrf_token %}
-                    <textarea rows="2" class="txtarea kuro_bc shiro_f" placeholder="輸入留言..." name = "cont" ></textarea>
-                    <hr class="type_hr ki_bc ki_bd ki_bs">
-                    <input type="submit" value="傳送" class="txt_btn shiro_bs">
-                </form>
+            <div id="chat-input">
+                <input type="text" id="user-message" placeholder="請輸入問題..." onkeypress="handleKeyPress(event)">
+                <!-- 修改 "送出" 按鈕的 type 屬性為 "button" -->
+                <button type="button" onclick="sendMessage()">送出</button>
+                <button onclick="closeChat()">關閉</button>
             </div>
         </div>
+      
+        <script>
+            var csrfToken = "{{ csrf_token }}";
+            
+            function appendMessage(message) {
+                var display = document.getElementById("chat-display");
+                var newMessage = document.createElement("div");
+                newMessage.innerHTML = message;
+                display.appendChild(newMessage);
+            }
+            function handleKeyPress(event) {
+              // Check if the pressed key is the "Enter" key (key code 13)
+              if (event.keyCode === 13) {
+                  sendMessage(); // Trigger the sendMessage function
+              }
+          }
+          async function sendMessage() {
+            var userInput = document.getElementById("user-message").value;
+            appendMessage("<strong>你：</strong>" + userInput);
+    
+            // 發送用戶輸入到後端處理
+            try {
+                const response = await fetch("/chat_with_ai/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": csrfToken,  // 請確保在頁面上定義了 csrfToken 變數
+                    },
+                    body: JSON.stringify({ user_input: userInput }),
+                });
+    
+                if (!response.ok) {
+                    throw new Error("ChatGPT API request failed");
+                }
+    
+                const data = await response.json();
+                appendMessage("<strong>AI：</strong>" + data.answer);
+            } catch (error) {
+                console.error("Error sending message to ChatGPT API:", error);
+            }
+    
+            // 清空用戶輸入
+            document.getElementById("user-message").value = "";
+        }
+      
+            function toggleChat() {
+                var chatContainer = document.getElementById("chat-container");
+                chatContainer.style.display = (chatContainer.style.display === "none") ? "block" : "none";
+            }
+      
+            function closeChat() {
+                var chatContainer = document.getElementById("chat-container");
+                chatContainer.style.display = "none";
+            }
+        </script>
+        
     </main>
     <footer>
 
