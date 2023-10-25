@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>host</title>
+    {% load static %}
+    {% load my_filters %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../static/css/basic.css">
+    <link rel="stylesheet" href="../../static/css/host.css">
+    <link rel="stylesheet" href="../../static/css/color.css">
+    <link rel="stylesheet" href="../../static/css/star.css">
+</head>
+
+<body class="kuro_bc">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">億個人的小宇宙</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05"
+                aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample05">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/index/">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  active" href="/host/">直播主</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/client/">觀看者</a>
+                    </li>
+                </ul>
+                <form role="search">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                </form>
+            </div>
+        </div>
+    </nav>
+    <main class="kuro_bc">
+        <!--主要影片區-->
+        <div class="h_streams kuro_bc">
+
+            <div class="h_video midori_bd midori_bs">
+                <video class="each_v"id="user" autoplay playsinline style="object-position:center;">
+                    <!--<source src="../../static/video/001v.mp4" type="video/mp4">直播則刪除這行-->
+                </video>
+                <div class="v_ctrl">
+                    <form action="/delete/" method = "POST">{% csrf_token %}
+                        <input type="submit" value="&#xf2d4;" class="v_btn shiro_bs" id="l_c_btn">
+                    </form>
+                    <button type="button" class="v_btn shiro_bs" id="l_s_btn">
+                        <i class="fa-solid fa-gear fa-lg"></i>
+                    </button>
+                    <button class="shiro_bs" id="mic_btn"><i class="fa-solid fa-microphone fa-lg"></i></button>
+                    <button class="shiro_bs" id="camera_btn"><i class="fa-solid fa-video fa-lg"></i></button>
+                    <button type="button" class="v_btn shiro_bs" id="l_l_btn" data-bs-toggle="modal" data-bs-target="#LinkModal">
+                        <i class="fa-solid fa-link fa-lg"></i>
+                    </button>
+                    <form action="/stream/" method = "">
+                        <input type="submit" value="&#xf06e;" class="v_btn shiro_bs" id="l_v_btn">
+                    </form>
+                </div>
+            </div>
+            <!--若同時有兩個影片:-->
+            {% if checknum != 0 %}
+            {% if checknum %}
+            {% for i in checknum|my_range %}
+            <div class="h_video midori_bd midori_bs">
+                <video class="each_v" autoplay>
+                    <source src="../../static/video/001v.mp4" type="video/mp4">
+                </video>
+                <div class="v_ctrl">
+                    <form action="/delete/" method = "POST">{% csrf_token %}
+                        <input type="submit" value="&#xf2d4;" class="v_btn shiro_bs fa-input" id="s_c_btn">
+                    </form>
+                    <button type="button" class="v_btn shiro_bs" id="s_s_btn"><i class="fa-solid fa-gear fa-lg"></i></button>
+                    <button type="button" class="v_btn shiro_bs" id="s_l_btn" data-bs-toggle="modal" data-bs-target="#LinkModal">
+                        <i class="fa-solid fa-link fa-lg"></i>
+                    </button>
+                    <form action="/stream/" method = "">
+                        <input type="submit" value="&#xf06e;" class="v_btn shiro_bs" id="s_v_btn">
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+
+            <div></div>
+
+            {% endif %}
+            {% endif %}
+            <!--新增直播分支-->
+            <div class="add_new_stream">
+                <form action="/seperate/" method = "POST">{% csrf_token %}
+                    <input type="submit" class="add_btn shiro_bc kuro_f shiro_bs" value="+">
+                </form>
+            </div>
+        </div>
+        <!--留言區-->
+        <div class="h_comment kuro_bc">
+            <div class="h_messages murasaki_bd murasaki_bs shiro_f">
+                <p class="mes_tit">留言區</p>
+                {% for mes in mess %}
+                <div>
+                    <p class="mes_name">名稱</p>
+                    <p class="mes_con">{{ mes.MCont }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="h_typing murasaki_bd murasaki_bs">
+                <form class="type_area">
+                    <textarea rows="2" class="txtarea kuro_bc shiro_f" placeholder="輸入留言..."></textarea>
+                    <hr class="type_hr">
+                    <input type="submit" value="傳送" class="txt_btn shiro_bs">
+                </form>
+            </div>
+        </div>
+    </main>
+    <!-- 新增連結 -->
+    <div class="modal fade" id="LinkModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content kuro_bc shiro_f">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">新增連結</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <p class="modal_p">連結說明</p>
+                        <textarea rows="5" class="modal_txt" placeholder="輸入連結說明..."></textarea>
+                        <p class="modal_p">連結網址</p>
+                        <input type="text" class="modal_txt" placeholder="輸入連結網址...">
+                        <p class="modal_p">上傳圖片</p>
+                        <input type="file" accept="image/*">
+                        <input type="submit" class="v_btn modal_btn" value="完成">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+
+    </footer>
+</body>
+<script src='../static/js/host.js'></script>
+</html>

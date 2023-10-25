@@ -1,0 +1,193 @@
+body{
+    min-height: 100vh;
+    overflow-y: hidden;
+}
+main{
+    min-height: 100vh;
+    overflow-y: hidden;
+}
+.back{
+    width: 7%;
+    float: left;
+    display: flex;
+    justify-content: center;
+}
+.back_btn{
+    width: 50px;
+    height: 50px;
+    padding: 8px;
+    border-radius: 50%;
+    margin-top: 15px;
+    border:none;
+    transition: 1s;
+    margin-left: 40%;
+}
+.h_streams{
+    width: 73%;
+    height: 93vh;
+    float: left;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    overflow-y:auto;
+}
+.h_video{
+    max-width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    border: 1px solid;
+    border-radius: 10px;
+    margin:15px;
+    box-shadow:0 0 15px #15B0FE,inset 0 0 15px #15B0FE;
+}
+.each_v{
+    margin: 50px auto 0px;
+    width: 95%;
+    height: 70%;
+    border-radius: 10px;
+}
+.v_ctrl{
+    width: 90%;
+    height:60px;
+    display: flex;
+    justify-content: center;
+}
+.v_btn{
+    width: 50px;
+    height: 50px;
+    padding: 8px;
+    border-radius: 50%;
+    border: none;
+    transition: 1s;
+    margin:10px
+}
+#mic_btn,#camera_btn{
+    width: 50px;
+    height: 50px;
+    padding: 8px;
+    border-radius: 50%;
+    border: none;
+    transition: 1s;
+    margin: 10px;
+}
+.h_comment{
+    width: 20%;
+    height: 100vh;
+    float: left;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-y: hidden;
+}
+.h_messages{
+    width: 90%;
+    height: 65%;
+    border: solid 1px;
+    border-radius: 10px;
+    margin-top: 15px;
+    padding: 10px;
+    overflow-y: auto;
+    box-shadow: 0 0 15px #0008FF,inset 0 0 10px #0008FF;
+}
+.mes.tit{
+    font-size: 20px;
+}
+.mes_name{
+    font-size: 14px;
+    margin:3px auto;
+}
+.mes_con{
+    font-size: 12px;
+}
+.h_typing{
+    width: 90%;
+    height: 19%;
+    border: solid black 1px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 15px #0008FF,inset 0 0 10px #0008FF;
+}
+.type_area{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    flex-wrap: wrap;
+    border-radius: 10px;
+}
+.txtarea{
+    width: 90%;
+    resize: none;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    caret-color: #0008FF;
+    transition: 1s;
+}
+.txtarea:focus{
+    outline: none;
+    box-shadow: 0 0 10px #0008FF;
+}
+.type_hr{
+    width: 90%;
+    margin: 7px auto 15px;
+    height: 1px;
+}
+.txt_btn{
+    width: 40%;
+    height: 30px;
+    padding: 8px;
+    font-size: 16px !important;
+    border-radius: 10px;
+    line-height: 14px;
+    border: none;
+    transition: 1s;
+}
+.modal_txt{
+    width: 100%;  
+    resize: none;
+    margin: 0 auto;
+    padding: 5px;
+    border-radius: 10px;
+}
+.modal_p{
+    font-size: 16px;
+    margin-top: 10px;
+}
+.modal_btn{
+    float: right;
+    padding: 8px;
+    font-size: 16px !important;
+    border-radius: 10px;
+    border: none;
+    transition: 1s;
+}
+.v_btn:hover,.add_btn:hover,.modal_btn:hover{
+    background-color: #be3dff;
+    box-shadow: 0 0 10px #be3dff;
+    color:white;
+}
+.back_btn:hover{
+    background-color: #15B0FE;
+    box-shadow: 0 0 10px #15B0FE;
+    color:white;
+}
+.txt_btn:hover{
+    background-color: #0008FF;
+    box-shadow: 0 0 10px #0008FF;
+    color: white;
+    opacity: 0.7;
+}
+
+#mic_btn:hover,#camera_btn:hover{
+    background-color: rgb(255,80,80);
+    box-shadow: 0 0 10px rgb(255,80,80);
+    color: white;
+}
+input[type="submit"]{
+    font-family: 'Font Awesome 5 Free', Tahoma;
+    font-size: 24px;
+}
