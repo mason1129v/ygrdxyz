@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>頁面B</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            
+            function seperate() {
+                // 使用Ajax调用seperate视图
+                $.ajax({
+                    url: "/seperate/",
+                    type: "GET",
+                    success: function(response) {
+                        // 这里你可以处理返回的HTML，例如替换页面的某个部分
+                        // 例子：替换页面的一个ID为“content”的div
+                        $("#content").html(response);
+                    },
+                    error: function(error) {
+                        console.error("Error calling seperate:", error);
+                    }
+                });
+            }
+    
+            function checkForNotifications() {
+                $.get("/check_notifications/", function(data) {
+                    if(data.new_notifications) {
+                        alert("你有新的通知！");
+                        seperate(); // 在这里调用seperate函数
+                    }
+                }).fail(function() {
+                    console.error("錯誤在檢查通知。將在5秒後再試。");
+                });
+    
+                setTimeout(checkForNotifications, 5000);
+            }
+    
+            checkForNotifications();
+        });
+    </script>
+</head>
+<body>
+    <h1>檢查通知的頁面</h1>
+</body>
+</html>

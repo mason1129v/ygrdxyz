@@ -3,6 +3,8 @@
 import os
 import sys
 
+# ngrok http --domain=ygrdxyz.ngrok.io 8000
+
 
 def main():
     """Run administrative tasks."""

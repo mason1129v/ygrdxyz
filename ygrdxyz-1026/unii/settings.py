@@ -24,8 +24,15 @@ SECRET_KEY = "django-insecure-dpo_4oi!19)-&t4+#oukly1-!#t&uta8_gp@=zw%@(ozzbm@-l
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = ['*']
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
+    "https://ygrdxyz.ngrok.io",
+    "http://127.0.0.1:8000"
+]
+ALLOWED_HOSTS = ['ygrdxyz.ngrok.io', '127.0.0.1']
+CSRF_COOKIE_HTTPONLY = False
+CSRF_COOKIE_DOMAIN = "ygrdxyz.ngrok.io"
+CSRF_TRUSTED_ORIGINS = ['https://ygrdxyz.ngrok.io']
 
 
 
@@ -39,11 +46,13 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'uni',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
