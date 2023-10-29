@@ -64,6 +64,7 @@ main{
 .each_v{
     margin: 20px auto;
     width: 100%;
+    height: 480px;
     border-radius: 10px;
 }
 .c_ctrl{
