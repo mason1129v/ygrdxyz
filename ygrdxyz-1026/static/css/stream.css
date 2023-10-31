@@ -89,7 +89,7 @@ main{
     margin-top: 15px;
     padding: 10px;
     overflow-y: auto;
-    box-shadow: 0 0 15px #0008FF,inset 0 0 10px #0008FF;
+    box-shadow: 0 0 15px #15B0FE,inset 0 0 10px #15B0FE;
 }
 .mes.tit{
     font-size: 20px;
@@ -107,7 +107,7 @@ main{
     border: solid black 1px;
     border-radius: 10px;
     margin-bottom: 15px;
-    box-shadow: 0 0 15px #0008FF,inset 0 0 10px #0008FF;
+    box-shadow: 0 0 15px #15B0FE,inset 0 0 10px #15B0FE;
 }
 .type_area{
     width: 100%;
@@ -124,12 +124,12 @@ main{
     border: none;
     padding: 5px;
     border-radius: 10px;
-    caret-color: #0008FF;
+    caret-color: #15B0FE;
     transition: 1s;
 }
 .txtarea:focus{
     outline: none;
-    box-shadow: 0 0 10px #0008FF;
+    box-shadow: 0 0 10px #15B0FE;
 }
 .type_hr{
     width: 90%;
@@ -176,8 +176,8 @@ main{
     color:white;
 }
 .txt_btn:hover{
-    background-color: #0008FF;
-    box-shadow: 0 0 10px #0008FF;
+    background-color: #15B0FE;
+    box-shadow: 0 0 10px #15B0FE;
     color: white;
     opacity: 0.7;
 }
