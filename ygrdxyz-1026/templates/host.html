@@ -27,7 +27,7 @@
     <script>
         $(document).ready(function() {
             // 確保這個函數被調用
-          
+        
             
             function checkForNotifications() {
                 $.get("/check_notifications/", function(data) {
@@ -58,9 +58,8 @@
         });
     </script>
     
-    <script src='../static/js/host.js'></script>
     
-<body class="kuro_bc">
+<body class="shiro_bc">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">億個人的小宇宙</a>
@@ -87,12 +86,12 @@
             </div>
         </div>
     </nav>
-    <main class="kuro_bc">
+    <main class="shiro_bc">
         <!--主要影片區-->
-        <div class="h_streams kuro_bc">
+        <div class="h_streams rd_bg">
 
             <div class="h_video midori_bd midori_bs">
-                <video class="each_v"id="user" autoplay playsinline style="object-position:center;">
+                <video class="each_v" id="user" autoplay playsinline>
                     <!--<source src="../../static/video/001v.mp4" type="video/mp4">直播則刪除這行-->
                 </video>
                 <div class="v_ctrl">
@@ -117,7 +116,7 @@
             {% if checknum %}
             {% for i in checknum|my_range %}
             <div class="h_video midori_bd midori_bs">
-                <video class="each_v" autoplay>
+                <video class="each_v" autoplay loop>
                     <source src="../../static/video/001v.mp4" type="video/mp4">
                 </video>
                 <div class="v_ctrl">

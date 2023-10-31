@@ -73,20 +73,30 @@
         </div>
         <!--留言區-->
         <div class="h_comment">
-            <div class="h_messages d_ao_bd shiro_f">
-                <p class="mes_tit">即時留言</p>
+            <div class="h_messages l_ao_bd shiro_f l_ao_bs">
+                <p class="mes_tit l_ao_f">即時聊天室 </p>
+                <!--<ul id="messages"></ul>-->
                 {% for mes in mess %}
                 <div>
-                    <p class="mes_name">名稱</p>
-                    <p class="mes_con">{{ mes.MCont }}</p>
+                    <p class="mes_name">
+                        {% if mes.MID == "2" %}
+                            AI:
+                        {% elif mes.MID == "1" %}
+                            使用者:
+                        {% else %}
+                            未知
+                        {% endif %}
+                    {{ mes.MCont }}</p>
                 </div>
-                {% endfor %}
+            {% endfor %}
+            
+                <div id="chat-display" class="mes_name"></div>
             </div>
-            <div class="h_typing d_ao_bd">
+            <div class="h_typing l_ao_bd">
                 <form class="type_area">
                     <textarea rows="2" class="txtarea kuro_bc shiro_f" placeholder="輸入留言..."></textarea>
                     <hr class="type_hr">
-                    <input type="submit" value="傳送" class="txt_btn shiro_bs d_ao_f">
+                    <input type="submit" value="傳送" class="txt_btn shiro_bs l_ao_f">
                 </form>
             </div>
         </div>

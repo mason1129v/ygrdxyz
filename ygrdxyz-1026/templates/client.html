@@ -56,14 +56,11 @@
     <main class="kuro_bc">
         <!--資訊區-->
         <div class="c_intro kuro_bc">
-            <div class="c_wrap_img ki_bd ki_bs">
-                <img src="../static/img/images (2).jpg" class="c_intro_img">
+            <div class="c_wrap_img ki_bd ki_bs shiro_bc">
+                <img src="../static/img/shoes.PNG" class="c_intro_img">
             </div>
             <div class="c_intro_ctn shiro_f ki_bd ki_bs">
-                這裡是介紹的內容<br>
-                可以介紹商品<br>
-                或是要寫些什麼備註內容<br>
-                總之就是這麼回事...
+                這雙鞋子是時尚和舒適的完美結合，適合各種場合。它們的設計充滿了現代感，有著精緻的細節和時尚的外觀，讓您在任何場合都能閃耀出獨特的風采。這雙鞋子使用高質量的材料製作而成，提供出色的舒適性和耐用性，無論是長時間步行還是全天穿著都毫不負荷。
             </div>
             <a href="https://www.cyclegear.com/gear/street-steel-oakland-boots" target="_blank">
                 <button class="c_link_btn shiro_bs">瀏覽連結</button>
@@ -72,7 +69,8 @@
         <!--主要影片區-->
         <div class="c_streams">
             <div class="c_video">
-                <iframe class="each_v ki_bs" src="https://www.youtube.com/embed/aq2-1Vq71wY?si=MQYVzY9VUheOssj_?autoplay=1&controls=0" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                <iframe class="each_v ki_bs" src="https://www.youtube.com/embed/Y1iu7hRS1LM?si=jjkpAibxdh9OTC7n?autoplay=1&controls=0" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                <!--直播網址複址到?前-->
                 <!--<video class="each_v ki_bs" id="user" controls playsinline>
                     <source src="../static/video/001v.mp4" type="video/mp4">
                 </video>-->
@@ -89,7 +87,7 @@
         <!--留言區-->
         <div class="h_comment">
             <div class="h_messages ki_bd shiro_f ki_bs">
-                <p class="mes_tit">即時聊天室 </p>
+                <p class="mes_tit ki_f">即時聊天室 </p>
                 <!--<ul id="messages"></ul>-->
                 {% for mes in mess %}
                 <div>
@@ -105,7 +103,7 @@
                 </div>
             {% endfor %}
             
-                <div id="chat-display"></div>
+                <div id="chat-display" class="mes_name"></div>
             </div>
             <div class="h_typing ki_bd ki_bs">
                 <div class="type_area">

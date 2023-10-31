@@ -56,14 +56,11 @@
     <main class="kuro_bc">
         <!--資訊區-->
         <div class="c_intro kuro_bc">
-            <div class="c_wrap_img ki_bd ki_bs">
-                <img src="../static/img/images (2).jpg" class="c_intro_img">
+            <div class="c_wrap_img ki_bd ki_bs shiro_bc">
+                <img src="../static/img/suit.PNG" class="c_intro_img">
             </div>
             <div class="c_intro_ctn shiro_f ki_bd ki_bs">
-                這裡是介紹的內容<br>
-                可以介紹商品<br>
-                或是要寫些什麼備註內容<br>
-                總之就是這麼回事...
+                這款外套是您秋季和冬季的時尚必備品。它的設計簡約而充滿個性，為您的風格增添一抹精緻的味道。製作材料採用高品質的羊毛混紡，既保暖又輕便，讓您在寒冷的天氣中感到溫暖舒適。
             </div>
             <a href="https://www.cyclegear.com/gear/street-steel-oakland-boots" target="_blank">
                 <button class="c_link_btn shiro_bs">瀏覽連結</button>
@@ -72,8 +69,8 @@
         <!--主要影片區-->
         <div class="c_streams">
             <div class="c_video">
-                <video class="each_v ki_bs" id="user" controls playsinline>
-                    <!--<source src="../static/video/001v.mp4" type="video/mp4">-->
+                <video class="each_v ki_bs" autoplay playsinline loop>
+                    <source src="../static/video/001v.mp4" type="video/mp4">
                 </video>
                 <hr class="v_hr ki_bc ki_bd ki_bs">
                 <div class="c_ctrl">
@@ -88,7 +85,7 @@
         <!--留言區-->
         <div class="h_comment">
             <div class="h_messages ki_bd shiro_f ki_bs">
-                <p class="mes_tit">即時聊天室 </p>
+                <p class="mes_tit ki_f">即時聊天室 </p>
                 <!--<ul id="messages"></ul>-->
                 {% for mes in mess %}
                 <div>
@@ -104,7 +101,7 @@
                 </div>
             {% endfor %}
             
-                <div id="chat-display"></div>
+                <div id="chat-display" class="mes_name"></div>
             </div>
             <div class="h_typing ki_bd ki_bs">
                 <div class="type_area">
