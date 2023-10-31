@@ -29,6 +29,7 @@ def clear_mess_data():
     messbrd.objects.all().delete()
     c_messbrd.objects.all().delete() 
     Notifications.objects.all().delete()
+    Notification.objects.all().delete()
     print("success_open")
 clear_mess_data()
 
@@ -145,10 +146,10 @@ async def chat_with_ai(request):
         for word in words_to_remove:
             sentence = sentence.replace(word, "")
 
-        engine = pyttsx3.init()
-        engine.say(sentence)
-        engine.runAndWait()
-        engine.stop()
+        # engine = pyttsx3.init()
+        # engine.say(sentence)
+        # engine.runAndWait()
+        # engine.stop()
 
         print("ai:", ai_response)
         # 使用sync_to_async异步保存消息
@@ -161,6 +162,13 @@ async def chat_with_ai(request):
         return JsonResponse({'answer': ai_response})
 
     return JsonResponse({'error': '無效的請求'})
+
+@sync_to_async
+def create_direct_notification(user_input):
+    message = f"{user_input}"
+    Notification.objects.create(message=message)
+    print("保存問題:"+ message )
+
 
 async def chat_with_ai_cloth(request):
     if request.method == 'POST':
@@ -183,7 +191,7 @@ async def chat_with_ai_cloth(request):
         如果客人與你說嗨，一定要回複他您好歡迎進入服飾直播間。
         如果客人請你推薦衣服，請從最貴的兩個中選一個推薦給他。
         如果客人說他需要試穿，請和他說可以到店試穿。
-        如果遇到你無法理解您的訊息，請回答他，我們將連繫直播主幫您解惑。
+        如果遇到你無法理解您的訊息，一定要在語句中加上"我們將連繫直播主幫您解惑"，這非常重要。
         客人想看其他衣服外的商品的時候，就直接推薦他到同樣是賣東西的鞋子直播間。
         雖然我們是一間服飾店，但是如果有顧客想要看除了衣服外的其他商品，都要建議他到另一個賣鞋子的直播間。
         回應客人問題時，不需要照以上資料那麼制式化，請自然一點，但少說廢話，也不需要跟他說編號是多少。
@@ -226,6 +234,9 @@ async def chat_with_ai_cloth(request):
 
         print(ai_response)
 
+        if "我們將連繫直播主幫您解惑" in ai_response:
+            await create_direct_notification(user_input)
+        print("有問題")
         # tts_thread = threading.Thread(target=run_tts, args=(engine, ai_response,))
         # tts_thread.start()
         # new_engine = create_and_start_engine()
@@ -265,6 +276,8 @@ async def chat_with_ai_cloth(request):
 #     engine.runAndWait()
 
 
+
+
 def index_view(request):
     return render(request, 'index.html', locals())
 
@@ -299,6 +312,18 @@ def check_notifications(request):
         return JsonResponse({'new_notifications': True})
     
     return JsonResponse({'new_notifications': False})
+
+def check_ns(request):
+    time_threshold = timezone.now() - timedelta(seconds=5)
+    new_notifications = Notification.objects.filter(viewed=False, timestamp__gte=time_threshold)
+
+    if new_notifications.exists():
+        latest_notification = new_notifications.latest('timestamp')  # 獲取最新的通知
+        message = latest_notification.message  # 從該通知中取得訊息
+        return JsonResponse({'new_notifications': True, 'message': message})
+
+    return JsonResponse({'new_notifications': False})
+
 
 
 def alert_view(request):
@@ -393,7 +418,9 @@ def search_keyword(text, keyword):
     else:
         return False
 
-
 def stream_view(request):
-    mess = messbrd.objects.all()
+    if Notification.objects.exists():
+        mess = Notification.objects.all()
+    else:
+        mess = None
     return render(request, 'stream.html', locals())

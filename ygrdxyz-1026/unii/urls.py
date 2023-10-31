@@ -23,4 +23,8 @@ urlpatterns = [
     path('alert1/', views.alert1_view),
     path('create_notification/', views.create_notification, name='create_notification'),
     path('check_notifications/', views.check_notifications, name='check_notifications'),
+    path('create_direct_notification/', views.create_direct_notification, name='create_direct_notification'),
+    path('check_ns/', views.check_ns, name='check_ns'),
+
+    
 ]

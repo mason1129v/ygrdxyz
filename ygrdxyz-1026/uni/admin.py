@@ -4,3 +4,4 @@ from uni.models import *
 admin.site.register(messbrd)
 admin.site.register(c_messbrd)
 admin.site.register(Notifications)
+admin.site.register(Notification)

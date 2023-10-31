@@ -18,3 +18,9 @@ class Notifications(models.Model):
     message = models.CharField(max_length=255)
     viewed = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
+
+class Notification(models.Model):
+    message = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+    viewed = models.BooleanField(default=False)
+

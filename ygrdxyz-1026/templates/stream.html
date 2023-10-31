@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../../static/css/stream.css">
     <link rel="stylesheet" href="../../static/css/color.css">
     <link rel="stylesheet" href="../../static/css/star.css">
+  
 </head>
 
 <body class="kuro_bc">
@@ -70,8 +71,32 @@
                     </button>
                 </div>
             </div>
-        </div>
+        </div>       
         <!--留言區-->
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                function checkForNewNotifications() {
+                    $.get("/check_ns/", function(data) {
+                        if(data.new_notifications) {
+                            var message = data.message;  // 從伺服器的回應中獲取訊息
+                            $('#chatBox').append('<div class="message">' + message + '</div>');
+                            alert("有觀眾有問題！");
+                            location.reload();  // 重新整理頁面
+                        }
+                    }).fail(function() {
+                        console.error("錯誤在檢查通知。將在5秒後再試。");
+                    });
+                }
+        
+                setInterval(checkForNewNotifications, 5000);
+            });
+        </script>
+        
+
+        
         <div class="h_comment">
             <div class="h_messages l_ao_bd shiro_f l_ao_bs">
                 <p class="mes_tit l_ao_f">即時聊天室 </p>
@@ -79,14 +104,8 @@
                 {% for mes in mess %}
                 <div>
                     <p class="mes_name">
-                        {% if mes.MID == "2" %}
-                            AI:
-                        {% elif mes.MID == "1" %}
-                            使用者:
-                        {% else %}
-                            未知
-                        {% endif %}
-                    {{ mes.MCont }}</p>
+                        使用者問題:{{ mes.message }}
+                    </p>
                 </div>
             {% endfor %}
             
